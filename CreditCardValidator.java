@@ -15,12 +15,14 @@ public class CreditCardValidator {
 		var evenDigitsSum = 0;
 		long CreditCardNumberLong = parseLong(creditCardNumber);
 		
-		for (var i = 0; i < creditCardNumber.length(); i++) {
+		var i = 0;
+		while (i < creditCardNumber.length()) {
 			if (i % 2 == 0) oddDigitsSum += CreditCardNumberLong % 10;
 			else if (CreditCardNumberLong % 10 * 2 > 9)
 				evenDigitsSum += (CreditCardNumberLong % 10 * 2) % 10 + (CreditCardNumberLong % 10 * 2) / 10;
 			else evenDigitsSum += CreditCardNumberLong % 10 * 2;
 			CreditCardNumberLong /= 10;
+			i++;
 		}
 		
 		var totalSum = oddDigitsSum + evenDigitsSum;
